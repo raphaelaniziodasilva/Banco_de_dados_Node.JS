@@ -1,5 +1,5 @@
 # Node-Express
-Aprendendo sobre NodeJS
+Aprendendo sobre NodeJS:
 
 ## Aprendemos sobre
  <li>Métodos HTTP
@@ -19,9 +19,9 @@ Aprendendo sobre NodeJS
  # Linguagens utilizadas 
  <br>   
  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" width="52" alt="javascript logo"/>
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" height="60" width="82" alt="nodejs logo" />
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-plain-wordmark.svg" height="60" width="82" alt="mysql logo" />  
- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-plain-wordmark.svg" height="60" width="82" alt="sequelize logo" />
+ <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" height="80" width="102" alt="nodejs logo" />
+ <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-plain-wordmark.svg" height="80" width="102" alt="mysql logo" />  
+ <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-plain-wordmark.svg" height="80" width="102" alt="sequelize logo" />
 
           
           
