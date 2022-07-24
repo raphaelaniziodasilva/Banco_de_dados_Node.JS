@@ -4,37 +4,50 @@
 const { Produtos, Fabricantes, Categorias } = require("../models/index")
 
 const produtoControler = {
-    // cadastrar produto
+    // cadastrar produto   
      async cadastrarProduto(req, res) {
-        const {nome, preco, quantidade, fabricante_id, categorias_id}  = req.body
-        const novoProduto = await Produtos.create({
+        try {
+            const {nome, preco, quantidade, fabricante_id, categorias_id}  = req.body
+
+            const novoProduto = await Produtos.create({
             nome,
             preco,
             quantidade,
             fabricante_id
         })
 
-        const categoria = await Categorias.findByPk(categorias_id)
-        await novoProduto.setCategorias(categoria)
+            const categoria = await Categorias.findByPk(categorias_id)
+            await novoProduto.setCategorias(categoria)
 
-        res.json(novoProduto) 
+            res.status(201).json(novoProduto) 
+            
+        } catch (error) {
+            res.status(400).json("Produto não cadastrado")            
+        }
     },
 
     // listar produto
     listarProdutos: async (req, res) => {
-        const listaDeProdutos = await Produtos.findAll(
-            {
-                /* se eu quiser ter acesso à estrutura de Fabricantes:
-                include: Fabricantes
-                */
-                include: Categorias // acessando a estrutura de Categorias
-            }
-        ) 
-        res.json(listaDeProdutos) 
+
+        try {
+            const listaDeProdutos = await Produtos.findAll(
+                {
+                    /* se eu quiser ter acesso à estrutura de Fabricantes:
+                    include: Fabricantes
+                    */
+                    include: Categorias // acessando a estrutura de Categorias
+                }
+            ) 
+            res.status(200).json(listaDeProdutos) 
+            
+        } catch (error) {
+            res.status(404).json("Lista não encontrada")
+        }
     },
 
     // deletar produtos 
     async deletarProduto (req, res) {
+
         const { id } = req.params
 
         await Produtos.destroy({
@@ -42,27 +55,34 @@ const produtoControler = {
                 id,
             }
         })
-        res.json("Produto deletado meu chapa") 
+        res.status(204)
     },
 
-
-    // atualizar produtos 
+    // atualizar produtos
     async atualizarProduto (req, res) {
 
-        const { id } = req.params
+        try {
+            const { id } = req.params
+            const {nome, preco, quantidade}  = req.body
 
-        const {nome, preco, quantidade}  = req.body
+            // se o id não for enviado
+            if (!id) return res.status(400).json("id não enviado")
 
-        const produtoAtualizado = await Produtos.update({
-            nome,
-            preco,
-            quantidade,
-        }, {
+            const produtoAtualizado = await Produtos.update({
+                nome,
+                preco,
+                quantidade,
+            }, {
             where: {
                 id,
             }
-        })
-        res.json("Produto Atualizado") 
+            })
+
+            res.json("Produto Atualizado")             
+        } catch (error) {
+            res.status(400).json("Erro ao tentar atualizar")
+            
+        }
     }
 }
 

@@ -12,16 +12,16 @@ const produtoControler = require("../controllers/protudosControllers")
 const routes = express.Router() 
 
 // criar uma rota para cadastrar protudos usaremos o metodo post: chamando o nosso produtoControler e acessando o metodo cadastrarProduto
-routes.post("/produto/criar", produtoControler.cadastrarProduto)
+routes.post("/produtos", produtoControler.cadastrarProduto)
 
 // criar uma rota para listar protudos usaremos o metodo get: chamando o nosso produtoControler e acessando o metodo listaDeProdutos   
-routes.get("/produto/listar", produtoControler.listarProdutos)
+routes.get("/produtos", produtoControler.listarProdutos)
 
 // criar uma rota para deletar protudos usaremos o metodo delete: chamando o nosso produtoControler e acessando o metodo deletarProduto
-routes.delete("/produto/:id/deletar", produtoControler.deletarProduto)
+routes.delete("/produtos/:id", produtoControler.deletarProduto)
 
 // criar uma rota para atualizar protudos usaremos o metodo put: chamando o nosso produtoControler e acessando o metodo atualizarProduto
-routes.put("/produto/:id/atualizar", produtoControler.atualizarProduto)
+routes.put("/produtos/:id", produtoControler.atualizarProduto)
 
 // Vamos exportar o modulo para depois usar dentro do app.js, vamos exportar todas as rotas depois, conforme forem criadas la no app.js
 module.exports = routes 
