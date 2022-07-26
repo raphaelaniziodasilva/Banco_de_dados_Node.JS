@@ -2,6 +2,8 @@ const Fabricantes = require("./Fabricantes")
 const Produtos = require("./Produtos")
 const Categorias = require("./Categorias")
 const CategoriaProduto = require("./CategoriaProduto")
+const Usuarios = require("./Usuarios")
+
 
 // relacionamento de 1 para n entre as tabelas Produtos e Fabricantes
 Produtos.belongsTo(Fabricantes, {
@@ -24,6 +26,7 @@ Categorias.belongsToMany(Produtos, {
 module.exports = {
     Fabricantes,
     Produtos,
-    Categorias
+    Categorias,
+    Usuarios
 }
 

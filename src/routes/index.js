@@ -8,6 +8,9 @@ const express = require("express")
 // importando o produtoControler que esta no arquivo produtoControllers.js
 const produtoControler = require("../controllers/protudosControllers")
 
+// importando o usuariosControler que esta no arquivo produtoControllers.js
+const usuariosControler = require("../controllers/usuarioControllers")
+
 // ativar o recurso de rotas para poder criar novas rotas neste arquivo
 const routes = express.Router() 
 
@@ -22,6 +25,9 @@ routes.delete("/produtos/:id", produtoControler.deletarProduto)
 
 // criar uma rota para atualizar protudos usaremos o metodo put: chamando o nosso produtoControler e acessando o metodo atualizarProduto
 routes.put("/produtos/:id", produtoControler.atualizarProduto)
+
+// criar uma rota para registrar usauarios usaremos o metodo post: chamando o nosso usuariosControler e acessando o metodo registro
+routes.post("/usuarios", usuariosControler.registro)
 
 // Vamos exportar o modulo para depois usar dentro do app.js, vamos exportar todas as rotas depois, conforme forem criadas la no app.js
 module.exports = routes 
