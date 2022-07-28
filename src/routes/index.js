@@ -11,6 +11,9 @@ const produtoControler = require("../controllers/protudosControllers")
 // importando o usuariosControler que esta no arquivo produtoControllers.js
 const usuariosControler = require("../controllers/usuarioControllers")
 
+// importando a validação de usuarios para colocar ele de forma local, insira o usuarioCreateValidation dentro da rota desejada antes do controller para poder validar as informações
+const usuarioCreateValidation = require("../validations/usuarios/creat")
+
 // ativar o recurso de rotas para poder criar novas rotas neste arquivo
 const routes = express.Router() 
 
@@ -27,7 +30,7 @@ routes.delete("/produtos/:id", produtoControler.deletarProduto)
 routes.put("/produtos/:id", produtoControler.atualizarProduto)
 
 // criar uma rota para registrar usauarios usaremos o metodo post: chamando o nosso usuariosControler e acessando o metodo registro
-routes.post("/usuarios", usuariosControler.registro)
+routes.post("/usuarios", usuarioCreateValidation, usuariosControler.registro)
 
 // Vamos exportar o modulo para depois usar dentro do app.js, vamos exportar todas as rotas depois, conforme forem criadas la no app.js
 module.exports = routes 
